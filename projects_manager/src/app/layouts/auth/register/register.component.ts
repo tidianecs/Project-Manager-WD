@@ -27,6 +27,6 @@ export class RegisterComponent {
     }
 
     alert("Compte créé ! Vérifiez votre email pour confirmer.");
-    //this.router.navigate(['/auth/login']);
+    this.router.navigate(['/project-dashboard']);
   }
 }

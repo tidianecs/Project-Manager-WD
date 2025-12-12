@@ -28,8 +28,7 @@ export class LoginComponent {
       this.errorMessage = error.message;
       console.log(this.errorMessage);
     } else {
-      // Redirection vers ProjectDashboard
-      //this.router.navigate(['/project-dashboard']);
+      this.router.navigate(['/project-dashboard']);
     }
   }
 }
