@@ -20,14 +20,10 @@ export class ProjectDashboardComponent implements OnInit {
   loading = false;
   userId: string | null = null;
 
-  constructor(
-    private supabaseService: SupabaseService,
-    private projectService: ProjectService,
-    private router: Router
-  ) {}
+  constructor(private supabaseService: SupabaseService, private projectService: ProjectService, private router: Router) {}
 
   async ngOnInit() {
-    // Récupérer l'utilisateur connecté
+    //in order to get the user id
     const { data } = await this.supabaseService.getUser();
     this.userId = data.user?.id ?? null;
 
@@ -63,14 +59,14 @@ export class ProjectDashboardComponent implements OnInit {
     this.newProject = { title: '', description: '' };
   }
 
-  async deleteProject(id: number) {
+  async deleteProject(id: string) {
     await this.projectService.deleteProject(id);
     this.projects = this.projects.filter(p => p.id !== id);
   }
 
-  goToProjectTasks(id: number | undefined) {
+  goToProjectTasks(id: string | undefined) {
     console.log("clicked project with id:", id);
+    this.router.navigate(['/task-dashboard', id]);
     if (!id) return;
-    //this.router.navigate(['/tasks', id]);
   }
 }

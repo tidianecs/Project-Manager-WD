@@ -36,7 +36,7 @@ export class ProjectService {
     return data as Project
   }
 
-  async deleteProject(project_id: number): Promise<void> {
+  async deleteProject(project_id: string): Promise<void> {
     const {data, error} = await this.supabaseService.getClient()
         .from('projects')
         .delete()
@@ -44,6 +44,7 @@ export class ProjectService {
     if(error) throw error
   }
 
+  /*
   async getProjectById(projectId: number): Promise<Project> {
     const {data, error} = await this.supabaseService.getClient()
       .from('projects')
@@ -54,5 +55,5 @@ export class ProjectService {
     if (error) throw error
     console.log(data);
     return data as Project
-  }
+  }*/
 }
